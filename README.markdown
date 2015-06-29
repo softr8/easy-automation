@@ -63,6 +63,7 @@ More Reference: http://selenium.rubyforge.org/rdoc/classes/Selenium/
 Runner - Configuring your tests
 ------
 You can change any behaviour using EasyAutomation::Runner.config helper, options:
+
     EasyAutomation::Runner.configure do |config|
       # Selenium Configurations
       config.url = "http://www.google.com"
@@ -96,7 +97,9 @@ You can change any behaviour using EasyAutomation::Runner.config helper, options
     end
 
 You can modify the behaviour via command line arguments, it's very useful when you want to run the same tests against different url, browser, etc, for example:
+
     bundle exec ruby example.rb --url=http://google.com
+
 This will run the example provided against http://google.com instead of http://www.google.com defined on the configure block, another example:
 
     bundle exec ruby example.rb --url=http://images.google.com --browser=*safari
@@ -127,6 +130,7 @@ Structure:
         mainpage.yml
 
 main_page.rb
+
     class MainPage < EasyAutomation::Page
       def login_field
         @browser.text_field(:id, @elements.login)
@@ -137,10 +141,12 @@ main_page.rb
     end
 
 mainpage.yml
+
     login: xpath=id('login')
     password: xpath=id('password')
 
 main_page_test.rb
+
     class MainPageTest < EasyAutomation::Test
       def initialize test_name, path = 'data'
         super(test_name, path)
@@ -155,11 +161,13 @@ main_page_test.rb
     end
 
 mainpagetest.yml
+
     login_failed_test:
       email: wrong@email.com
       password: pasguord
 
 runner_demo.rb
+
     require 'rubygems'
     require 'easy-automation'
     Dir["#{File.dirname(__FILE__)}/*/*.rb"].each { |f| require f }
@@ -179,6 +187,7 @@ runner_demo.rb
     EasyAutomation::Runner.run demo_suite
 
 Find some working code under examples folder, to see it search exmple on action, execute:
+
     cd examples/search
     bundle exec ruby example.rb
 
